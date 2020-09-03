@@ -11,9 +11,16 @@ export default class Song {
   }
 
   get Template() {
-    return `
-
-        `;
+    return `<div class="card col-12">
+    <div class="card-body d-flex flex-direction-column">
+        <img class="search-image" src="${this.albumArt}" alt="">
+        <p class="card-text my-auto  pl-3">${this.title}</p>
+        <p class="card-text my-auto  pl-3">${this.artist}</p>
+        <p class="card-text my-auto  pl-3">${this.price}</p>
+        <button class="btn btn-primary ml-1 m my-auto" onclick="app.SongsController.getDetails('${this._id}')">Details</button>
+  </div>
+</div>
+`;
   }
 
   get playlistTemplate() {

@@ -2,7 +2,11 @@ import { ProxyState } from "../AppState.js";
 import Song from "../Models/Song.js";
 import { sandBoxApi } from "./AxiosService.js";
 
+
 class SongsService {
+  getDetails(id) {
+    console.log(id)
+  }
   /**
    * Takes in a search query and retrieves the results that will be put in the store
    * @param {string} query
@@ -13,6 +17,7 @@ class SongsService {
     // @ts-ignore
     $.getJSON(url)
       .then(res => {
+        console.log(res)
         ProxyState.songs = res.results.map(rawData => new Song(rawData));
       })
       .catch(err => {

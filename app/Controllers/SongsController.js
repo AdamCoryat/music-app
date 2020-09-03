@@ -1,8 +1,14 @@
 import songService from "../Services/SongsService.js";
+import { ProxyState } from "../AppState.js";
 
 //Private
 /**Draws the Search results to the page */
-function _drawResults() { }
+function _drawResults() {
+  let template = ""
+  ProxyState.songs.forEach(s => template += s.Template)
+  document.getElementById('songs').innerHTML = template 
+
+ }
 
 /**Draws the Users saved songs to the page */
 function _drawPlaylist() { }
@@ -10,6 +16,7 @@ function _drawPlaylist() { }
 //Public
 export default class SongsController {
   constructor() {
+    ProxyState.on("songs", _drawResults)
     //TODO Don't forget to register your listeners and get your data
   }
 
@@ -29,6 +36,14 @@ export default class SongsController {
    * @param {string} id
    */
   addSong(id) { }
+
+  getDetails(id){
+    try {
+      songService.getDetails(id)
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   /**
    * Takes in a song id to be removed from the users playlist and sends it to the server

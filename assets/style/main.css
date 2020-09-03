@@ -42,6 +42,17 @@
   box-sizing: border-box;
 }
 
+.search-image{
+  max-height: 10vh;
+  max-width: 10vw;
+}
+
+.songs{
+  height: 85vh;
+  overflow-y: scroll;
+}
+
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
