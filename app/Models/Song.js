@@ -21,9 +21,11 @@ export default class Song {
         <p class="card-text my-auto  pl-3">${this.title}</p>
         <p class="card-text my-auto  pl-3">${this.artist}</p>
         <p class="card-text my-auto  pl-3">${this.price}</p>
-        <button class="btn btn-primary ml-1 m my-auto" onclick="app.songsController.getDetails('${this._id}')">Details</button>
+        ${this.templateButton}
+        
   </div>
 </div>
+
 `;
   }
 
@@ -52,7 +54,14 @@ ${this.activeButton}
     if(this.sandBox){
       return `<button class="btn btn-danger" onclick="app.mySongsController.removeSong('${this._id}')">Remove Song</button>`
     } 
-    return `<button class="btn btn-success" onclick="app.songsController.addSong('${this._id}')">Add Song</button>`
+    return `<button class="btn btn-success" onclick="app.mySongsController.addSong('${this._id}')">Add Song</button>`
 
+  }
+
+  get templateButton(){
+    if(this.sandBox){
+      return `<button class="btn btn-primary ml-1 m my-auto" onclick="app.mySongsController.getDetails('${this._id}')">Details</button>`
+    } 
+    return `<button class="btn btn-primary ml-1 m my-auto" onclick="app.songsController.getDetails('${this._id}')">Details</button>`
   }
 }
