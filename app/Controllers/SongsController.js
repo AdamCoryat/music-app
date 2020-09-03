@@ -10,6 +10,15 @@ function _drawResults() {
 
  }
 
+ function _drawSongDetails(){
+   if(ProxyState.activeSong){
+     document.getElementById('song-details').innerHTML = ProxyState.activeSong.activeTemplate
+   } else {
+     document.getElementById('song-details').innerHTML = ""
+   }
+
+ }
+
 /**Draws the Users saved songs to the page */
 function _drawPlaylist() { }
 
@@ -17,6 +26,7 @@ function _drawPlaylist() { }
 export default class SongsController {
   constructor() {
     ProxyState.on("songs", _drawResults)
+    ProxyState.on("activeSong", _drawSongDetails)
     //TODO Don't forget to register your listeners and get your data
   }
 

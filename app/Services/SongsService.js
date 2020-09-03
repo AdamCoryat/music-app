@@ -5,7 +5,8 @@ import { sandBoxApi } from "./AxiosService.js";
 
 class SongsService {
   getDetails(id) {
-    console.log(id)
+   let song = ProxyState.songs.find(s => s._id == id)
+   ProxyState.activeSong = song
   }
   /**
    * Takes in a search query and retrieves the results that will be put in the store
@@ -17,7 +18,6 @@ class SongsService {
     // @ts-ignore
     $.getJSON(url)
       .then(res => {
-        console.log(res)
         ProxyState.songs = res.results.map(rawData => new Song(rawData));
       })
       .catch(err => {
