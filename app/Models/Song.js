@@ -1,5 +1,5 @@
 export default class Song {
-  constructor(data, user) {
+  constructor(data) {
     this.title = data.trackName || data.title;
     this.albumArt =
       data.albumArt || data.artworkUrl100.replace(/100x100/g, "300x300");
@@ -9,7 +9,7 @@ export default class Song {
     this.preview = data.previewUrl || data.preview;
     this._id = data.trackId || data._id;
     this.sandBox = false
-    if (user) {
+    if (data.user) {
       this.sandBox = true
     }
   }
