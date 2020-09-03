@@ -1,5 +1,5 @@
 export default class Song {
-  constructor(data, user) {
+  constructor(data) {
     this.title = data.trackName || data.title;
     this.albumArt =
       data.albumArt || data.artworkUrl100.replace(/100x100/g, "300x300");
@@ -9,7 +9,7 @@ export default class Song {
     this.preview = data.previewUrl || data.preview;
     this._id = data.trackId || data._id;
     this.sandBox = false
-    if (user) {
+    if (data.user) {
       this.sandBox = true
     }
   }
@@ -29,12 +29,12 @@ export default class Song {
 `;
   }
 
-  
+
 
   get activeTemplate() {
     return ` <div class="card text-center">
-    <img class="card-img-top img-details" src="${this.albumArt}" alt="">
     <div class="card-body">
+    <img class="img-fluid img-details" src="${this.albumArt}" alt="">
         <h4 class="card-title">${this.title}</h4>
         <p class="card-text">${this.artist}</p>
         <p class="card-text">${this.price}</p>
@@ -50,18 +50,18 @@ ${this.activeButton}
         `;
   }
 
-  get activeButton(){
-    if(this.sandBox){
+  get activeButton() {
+    if (this.sandBox) {
       return `<button class="btn btn-danger" onclick="app.mySongsController.removeSong('${this._id}')">Remove Song</button>`
-    } 
+    }
     return `<button class="btn btn-success" onclick="app.mySongsController.addSong('${this._id}')">Add Song</button>`
 
   }
 
-  get templateButton(){
-    if(this.sandBox){
+  get templateButton() {
+    if (this.sandBox) {
       return `<button class="btn btn-primary ml-1 m my-auto" onclick="app.mySongsController.getDetails('${this._id}')">Details</button>`
-    } 
+    }
     return `<button class="btn btn-primary ml-1 m my-auto" onclick="app.songsController.getDetails('${this._id}')">Details</button>`
   }
 }

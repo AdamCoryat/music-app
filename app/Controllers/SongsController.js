@@ -6,18 +6,18 @@ import { ProxyState } from "../AppState.js";
 function _drawResults() {
   let template = ""
   ProxyState.songs.forEach(s => template += s.Template)
-  document.getElementById('songs').innerHTML = template 
+  document.getElementById('songs').innerHTML = template
 
- }
+}
 
- function _drawSongDetails(){
-   if(ProxyState.activeSong){
-     document.getElementById('song-details').innerHTML = ProxyState.activeSong.activeTemplate
-   } else {
-     document.getElementById('song-details').innerHTML = ""
-   }
+function _drawSongDetails() {
+  if (ProxyState.activeSong) {
+    document.getElementById('song-details').innerHTML = ProxyState.activeSong.activeTemplate
+  } else {
+    document.getElementById('song-details').innerHTML = ""
+  }
 
- }
+}
 
 /**Draws the Users saved songs to the page */
 function _drawPlaylist() { }
@@ -47,7 +47,7 @@ export default class SongsController {
    */
   addSong(id) { }
 
-  getDetails(id){
+  getDetails(id) {
     try {
       songService.getDetails(id)
     } catch (error) {
@@ -59,5 +59,7 @@ export default class SongsController {
    * Takes in a song id to be removed from the users playlist and sends it to the server
    * @param {string} id
    */
-  removeSong(id) { }
+  removeSong(id) {
+
+  }
 }
